@@ -15,10 +15,11 @@ class ItemsController < ApplicationController
 	end
 	
 	def edit
+		@item = Item.find(params[:id])
 	end
 	
 	def create
-		@item = Item.create(params[:item])
+		@item = Item.create(items_params)
 		if @item.errors.empty?
 			redirect_to item_path(@item)
 		else
@@ -27,9 +28,24 @@ class ItemsController < ApplicationController
 	end
 	
 	def update
+		@item = Item.find(params[:id])
+		@item.update_attributes(items_params)
+		if @item.errors.empty?
+			redirect_to item_path(@item)
+		else
+			render "edit"
+		end
 	end
 	
 	def destroy
+		@item = Item.find(params[:id])
+		@item.destroy
+		redirect_to action: "index"
 	end	
+	
+	private
+	def items_params
+		params.require(:item).permit(:name, :price, :description, :weight)
+	end
 	
 end
