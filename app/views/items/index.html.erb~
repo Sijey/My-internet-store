@@ -1,0 +1,5 @@
+<% @items.each do |i| %>
+
+	<p><%= i.name %></p>
+	
+<% end %>
