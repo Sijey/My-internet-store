@@ -8,8 +8,23 @@
 </head>
 <body>
 
+<<<<<<< HEAD
+	<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+	<div class="sessionInfo">
+		<% if current_user %>
+			<%= current_user.login %> | <%= link_to "Выйти", destroy_user_session_path %>
+		<% else %>
+			<%= link_to "Войти", new_user_session_path %> | <%= link_to "Регистрация", new_user_registration_path %>
+		<% end %>
+	</div>
+
 <%= yield %>
-			 <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+			 
+=======
+<%= yield %>
+
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 </body>
 </html>

@@ -10,7 +10,11 @@ class ItemsController < ApplicationController
 	end
 	
 	def show
-		unless @item = Item.where(id: params[:id]).first
+<<<<<<< HEAD
+		unless @item
+=======
+		unless @item
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 			render text: "Page not found", status: 404
 		end
 	end
@@ -20,7 +24,9 @@ class ItemsController < ApplicationController
 	end
 	
 	def edit
-		@item = Item.find(params[:id])
+<<<<<<< HEAD
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	end
 	
 	def create
@@ -33,7 +39,9 @@ class ItemsController < ApplicationController
 	end
 	
 	def update
-		@item = Item.find(params[:id])
+<<<<<<< HEAD
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 		@item.update_attributes(items_params)
 		if @item.errors.empty?
 			redirect_to item_path(@item)
@@ -43,16 +51,20 @@ class ItemsController < ApplicationController
 	end
 	
 	def destroy
-		@item = Item.find(params[:id])
 		@item.destroy
-<<<<<<< HEAD
 		redirect_to action: "index"
-=======
-		redirect_toaction: "index"
->>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	end	
 	
 	private
+<<<<<<< HEAD
+	
+	def find_item
+		@item = Item.where(id: params[:id]).first
+		render_404 unless @item
+	end
+	
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	def items_params
 		params.require(:item).permit(:name, :price, :description, :weight)
 	end
