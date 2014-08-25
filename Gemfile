@@ -13,9 +13,12 @@ gem 'uglifier' #'>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'execjs'
+<<<<<<< HEAD
 
 gem 'devise'
 #gem 'activeadmin', github: 'gregbell/active_admin'
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 #
 
 # Use jquery as the JavaScript library

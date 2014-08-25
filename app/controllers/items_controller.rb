@@ -1,13 +1,20 @@
 class ItemsController < ApplicationController
 
+<<<<<<< HEAD
 	before_filter :find_item, only: [:show, :edit, :update, :destroy]
 
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	def index
 		@items = Item.all
 	end
 	
 	def show
+<<<<<<< HEAD
 		unless @item
+=======
+		unless @item = Item.where(id: params[:id]).first
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 			render text: "Page not found", status: 404
 		end
 	end
@@ -17,6 +24,10 @@ class ItemsController < ApplicationController
 	end
 	
 	def edit
+<<<<<<< HEAD
+=======
+		@item = Item.find(params[:id])
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	end
 	
 	def create
@@ -29,6 +40,10 @@ class ItemsController < ApplicationController
 	end
 	
 	def update
+<<<<<<< HEAD
+=======
+		@item = Item.find(params[:id])
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 		@item.update_attributes(items_params)
 		if @item.errors.empty?
 			redirect_to item_path(@item)
@@ -38,16 +53,23 @@ class ItemsController < ApplicationController
 	end
 	
 	def destroy
+<<<<<<< HEAD
+=======
+		@item = Item.find(params[:id])
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 		@item.destroy
 		redirect_to action: "index"
 	end	
 	
 	private
+<<<<<<< HEAD
 	
 	def find_item
 		@item = Item.find(params[:id])
 	end
 	
+=======
+>>>>>>> 42c1f04d5f13aba526534c2b06b0481d5be45768
 	def items_params
 		params.require(:item).permit(:name, :price, :description, :weight)
 	end
