@@ -4,7 +4,9 @@ class ItemsController < ApplicationController
 
 
 	def index
-		@items = Item.all
+		@items = Item
+		@items = @items.where("price >= ?", params[:price_from]) if params[:price_from]
+		@items = @items.order("price").limit(50)
 	end
 	
 	def show
@@ -32,8 +34,10 @@ class ItemsController < ApplicationController
 	def update
 		@item.update_attributes(items_params)
 		if @item.errors.empty?
+			flash[:success] = "Item successfully updated!"
 			redirect_to item_path(@item)
 		else
+			flash.now[:error] = "You made mistakes in your form! Please correct them"
 			render "edit"
 		end
 	end

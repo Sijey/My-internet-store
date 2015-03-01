@@ -1,0 +1,7 @@
+%h1= @item.name
+
+%ul
+  %li #{@item.price} грн.
+  %li= urls_to_links(urls_to_images(@item.description))
+  %li Вес: #{@item.weight} кг.
+

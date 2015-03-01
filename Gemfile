@@ -13,9 +13,17 @@ gem 'uglifier' #'>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 #gem 'execjs'
+gem 'haml-rails'
 
+group :test do
+	gem 'rspec-rails'
+	gem 'factory_girl'
+end
 
 gem 'devise'
+
+gem 'bootstrap-sass'
+gem 'simple_form'
 #gem 'activeadmin', github: 'gregbell/active_admin'
 
 #
