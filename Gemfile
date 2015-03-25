@@ -18,6 +18,7 @@ gem 'haml-rails'
 group :test do
 	gem 'rspec-rails'
 	gem 'factory_girl'
+	gem 'capybara'
 end
 
 gem 'devise'
