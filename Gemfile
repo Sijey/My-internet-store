@@ -24,6 +24,7 @@ end
 gem 'devise'
 
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'simple_form'
 #gem 'activeadmin', github: 'gregbell/active_admin'
 

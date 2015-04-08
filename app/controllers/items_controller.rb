@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 	
 	def destroy
 		@item.destroy
-		redirect_to action: "index"
+		render json: { success: true }
 	end	
 	
 	private
