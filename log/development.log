@@ -11861,3 +11861,418 @@ Processing by ItemsController#destroy as */*
   [1m[35mSQL (0.4ms)[0m  DELETE FROM "items" WHERE "items"."id" = ?  [["id", 3]]
   [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
 Completed 200 OK in 35ms (Views: 0.8ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:02:49 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[35m (19.5ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count
+  [1m[36mItem Load (0.9ms)[0m  [1mSELECT  "items".* FROM "items"   ORDER BY price LIMIT 50[0m
+  Rendered items/index.html.erb within layouts/application (41.6ms)
+Completed 200 OK in 12581ms (Views: 12479.4ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:02 +0300
+
+
+Started DELETE "/items/2" for 127.0.0.1 at 2015-05-21 11:03:10 +0300
+Processing by ItemsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[35mItem Load (0.6ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = 2  ORDER BY "items"."id" ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (9.2ms)[0m  DELETE FROM "items_orders" WHERE "items_orders"."item_id" = ?  [["item_id", 2]]
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 2]]
+  [1m[35m (2.1ms)[0m  commit transaction
+Completed 200 OK in 415ms (Views: 0.6ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-21 11:03:12 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (2.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (229.3ms)
+Completed 200 OK in 270ms (Views: 264.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-05-21 11:03:32 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eHAfanz9FLdhKyvTJWoMvKqt5I1PaF2XDS/CriYrklk=", "user"=>{"email"=>"Sijey@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (25.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'sijey@gmail.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 442ms (Views: 26.4ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:33 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:03:33 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:03:33 +0300
+
+
+Started POST "/users" for 127.0.0.1 at 2015-05-21 11:03:53 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eHAfanz9FLdhKyvTJWoMvKqt5I1PaF2XDS/CriYrklk=", "user"=>{"email"=>"sijey@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'sijey@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-05-21 08:03:53.300918"], ["email", "sijey@gmail.com"], ["encrypted_password", "$2a$10$9G0OPcAheWEI5tIsaR7jkux5gkH9/hmt9T8XKugvF3D3RS6fnUmTq"], ["updated_at", "2015-05-21 08:03:53.300918"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2015-05-21 08:03:53.344956"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2015-05-21 08:03:53.344956"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-05-21 08:03:53.347279"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 171ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:03:53 +0300
+Processing by ItemsController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count[0m
+  [1m[35mItem Load (0.5ms)[0m  SELECT  "items".* FROM "items"   ORDER BY price LIMIT 50
+  Rendered items/index.html.erb within layouts/application (6.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 52ms
+
+ActionView::Template::Error (undefined method `login' for #<User:0x007fdaeddc1160>):
+    14: 
+    15: 	<div class="sessionInfo">
+    16: 		<% if current_user %>
+    17: 			<%= current_user.login %> | <%= link_to "Выйти", destroy_user_session_path %>
+    18: 		<% else %>
+    19: 			<%= link_to "Войти", new_user_session_path %> | <%= link_to "Регистрация", new_user_registration_path %>
+    20: 		<% end %>
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb___499210542543104476_70289104851000'
+
+
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:15:13 +0300
+Processing by ItemsController#index as HTML
+  [1m[35m (1.8ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items"   ORDER BY price LIMIT 50[0m
+  Rendered items/index.html.erb within layouts/application (46.9ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 303ms
+
+ActionView::Template::Error (undefined method `login' for #<User:0x007fdaef868a18>):
+    20:     	<%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', 					 new_user_registration_path %>
+    21: 		<% end %>
+    22: 	#	<% if current_user %>
+    23: 	#		<%= current_user.login %> | <%= link_to "Выйти", destroy_user_session_path %>
+    24: 	#	<% else %>
+    25: 	#		<%= link_to "Войти", new_user_session_path %> | <%= link_to "Регистрация", new_user_registration_path %>
+    26: 	#	<% end %>
+  app/views/layouts/application.html.erb:23:in `_app_views_layouts_application_html_erb___499210542543104476_70289148909440'
+
+
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.6ms)
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.4ms)
+  Rendered /Users/sijey/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (100.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+Processing by ItemsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count[0m
+  [1m[35mItem Load (0.2ms)[0m  SELECT  "items".* FROM "items"   ORDER BY price LIMIT 50
+  Rendered items/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 200 OK in 36ms (Views: 33.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:15:52 +0300
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-05-21 11:15:59 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"eHAfanz9FLdhKyvTJWoMvKqt5I1PaF2XDS/CriYrklk="}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 102ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:16:00 +0300
+Processing by ItemsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY price LIMIT 50
+  Rendered items/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+Processing by ItemsController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count[0m
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY price LIMIT 50
+  Rendered items/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:05 +0300
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-21 11:16:08 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (42.2ms)
+Completed 200 OK in 80ms (Views: 77.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9HkUqQGbYZl4NWTEoFx4wDg/ZJ7v/NWrkyopf3Q8l6Y=", "user"=>{"email"=>"popov@mail.ru", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'popov@mail.ru' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 217ms (Views: 43.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:26 +0300
+
+
+Started POST "/users" for 127.0.0.1 at 2015-05-21 11:16:38 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9HkUqQGbYZl4NWTEoFx4wDg/ZJ7v/NWrkyopf3Q8l6Y=", "user"=>{"email"=>"popov@mail.ru", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'popov@mail.ru' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-05-21 08:16:39.002969"], ["email", "popov@mail.ru"], ["encrypted_password", "$2a$10$D9ebHfKZt.KW8sNrgCfqL.IxbM71VDK0LW0ANC6nMys00ZEvhmJK2"], ["updated_at", "2015-05-21 08:16:39.002969"]]
+  [1m[36m (50.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 2[0m  [["current_sign_in_at", "2015-05-21 08:16:39.057784"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2015-05-21 08:16:39.057784"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-05-21 08:16:39.058693"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 192ms (ActiveRecord: 61.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+Processing by ItemsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count[0m
+  [1m[35mItem Load (56.3ms)[0m  SELECT  "items".* FROM "items"   ORDER BY price LIMIT 50
+  Rendered items/index.html.erb within layouts/application (61.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 200 OK in 148ms (Views: 89.5ms | ActiveRecord: 57.0ms)
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:16:39 +0300
+
+
+Started GET "/items/6" for 127.0.0.1 at 2015-05-21 11:16:43 +0300
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = 6  ORDER BY "items"."id" ASC LIMIT 1
+  Rendered items/show.html.haml within layouts/application (94.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 200 OK in 168ms (Views: 150.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/items/new" for 127.0.0.1 at 2015-05-21 11:17:12 +0300
+Processing by ItemsController#new as HTML
+  Rendered items/_form.html.haml (90.8ms)
+  Rendered items/new.html.haml within layouts/application (545.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1
+Completed 200 OK in 586ms (Views: 583.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:13 +0300
+
+
+Started POST "/items" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9HkUqQGbYZl4NWTEoFx4wDg/ZJ7v/NWrkyopf3Q8l6Y=", "item"=>{"price"=>"250", "name"=>"Guitar", "description"=>"electric", "weight"=>"5"}, "commit"=>"Создать товар"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "items" ("created_at", "description", "name", "price", "updated_at", "weight") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-05-21 08:17:42.853094"], ["description", "electric"], ["name", "Guitar"], ["price", 250.0], ["updated_at", "2015-05-21 08:17:42.853094"], ["weight", 5.0]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/items/7
+Completed 302 Found in 19ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/items/7" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+Processing by ItemsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mItem Load (0.3ms)[0m  SELECT  "items".* FROM "items"  WHERE "items"."id" = 7  ORDER BY "items"."id" ASC LIMIT 1
+  Rendered items/show.html.haml within layouts/application (2.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 200 OK in 40ms (Views: 36.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:42 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:43 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:43 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:43 +0300
+
+
+Started GET "/items/" for 127.0.0.1 at 2015-05-21 11:17:46 +0300
+Processing by ItemsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "items"  LIMIT 50) subquery_for_count
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT  "items".* FROM "items"   ORDER BY price LIMIT 50[0m
+  Rendered items/index.html.erb within layouts/application (7.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/items.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/items.css?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-21 11:17:47 +0300
+
+
+Started DELETE "/items/7" for 127.0.0.1 at 2015-05-21 11:17:51 +0300
+Processing by ItemsController#destroy as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT  "items".* FROM "items"  WHERE "items"."id" = 7  ORDER BY "items"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "items_orders" WHERE "items_orders"."item_id" = ?[0m  [["item_id", 7]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "items" WHERE "items"."id" = ?  [["id", 7]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 2.9ms)
