@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
 	has_many :orders
 	has_many :comments
 
+	def to_s
+		email
+	end
 end
